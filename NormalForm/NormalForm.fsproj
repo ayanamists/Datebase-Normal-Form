@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="data-type.fs" />
+    <Compile Include="Closure.fs" />
+    <Compile Include="bcnf.fs" />
+    <Compile Include="3rd.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
