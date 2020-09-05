@@ -62,5 +62,15 @@ let main argv =
     ]
     printfn "test5 \n %A" (MiniCover funcD5)
 
+    let rel6 = [["A";"B";"C";"D";"E"]]
+    let funcD6 = [
+        (["A"],["B";"C"])
+        (["C";"D"],["E"])
+        (["B"],["D"])
+        (["E"],["A"])
+    ]
+    printfn "test6 \n %A" (BcnfDecomp rel6 funcD6)
+    printfn "test6 mini\n %A" (MiniCover funcD6)
+
     // Test6
     0 // return an integer exit code

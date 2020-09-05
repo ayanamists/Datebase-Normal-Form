@@ -8,6 +8,7 @@ open data_type
     一个属性集的闭包
 *)
 let rec ClosureOfSet (s: String List) (funcD: FuncDependencys) = 
+    //printfn "s:%A funcD:%A" s funcD
     let rec Test (s: String List) (funcD: FuncDependencys) = 
         match funcD with
         | [] -> false

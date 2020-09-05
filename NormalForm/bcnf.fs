@@ -4,12 +4,14 @@ open data_type
 open FSharp.Core
 
 let rec BcnfDecomp (rels:Relations) (funcD:FuncDependencys) = 
-    let rec DecompRel (rel:Relation) (funcD: FuncDependencys) = 
-        match funcD with
+    let rec DecompRel (rel:Relation) (now: FuncDependencys) = 
+        //printfn "%A %A" rel now
+        match now with
         | [] -> [rel]
         | car :: cdr ->
             let (s1, s2) = car
             let closure = ClosureOfSet s1 funcD
+            //printfn "c:%A -> %A" s1 closure
             if (SetInSet rel closure) || (IsTrivial car)
             then DecompRel rel cdr
             else
