@@ -53,11 +53,11 @@ let MiniCover funcD =
                 | [] -> [car]
                 | _ -> leftChecked
             | car :: cdr ->
-                let newClosure = ClosureOfSet cdr ((cdr, right) :: restfuncDs)
+                let newClosure = ClosureOfSet cdr (aFuncD :: restfuncDs)
                 if SetInSet right newClosure
                 then Inner cdr leftChecked
                 else Inner cdr (car :: leftChecked)
-        Inner left []
+        (Inner left [])
     let CanRemove aFuncD restfuncDs = 
         let (left, right) = aFuncD
         let newClosure = ClosureOfSet left restfuncDs
@@ -68,14 +68,16 @@ let MiniCover funcD =
         match funcDUnchecked with
         | [] -> funcDChecked
         | car :: cdr ->
+            let (left, right) = car
             let funcDRest = (List.append cdr funcDChecked) 
             let newLeft = DeleteFromLeft car funcDRest
+            let newCar = (newLeft, right)
             if List.isEmpty newLeft
             then RemoveProcess cdr funcDChecked
             else
-                if CanRemove car funcDRest
+                if CanRemove newCar funcDRest
                 then RemoveProcess cdr funcDChecked
-                else RemoveProcess cdr (car :: funcDChecked)
+                else RemoveProcess cdr (newCar :: funcDChecked)
     let rec MergeAll (funcDs:FuncDependencys) (res:FuncDependencys) = 
         // printfn "%A" funcDs
         match funcDs with

@@ -62,6 +62,7 @@ let main argv =
     ]
     printfn "test5 \n %A" (MiniCover funcD5)
 
+    // Test6
     let rel6 = [["A";"B";"C";"D";"E"]]
     let funcD6 = [
         (["A"],["B";"C"])
@@ -72,5 +73,16 @@ let main argv =
     printfn "test6 \n %A" (BcnfDecomp rel6 funcD6)
     printfn "test6 mini\n %A" (MiniCover funcD6)
 
-    // Test6
+    // Test7
+    let rel7 = [["A";"B";"C";"D";"E";"F"]]
+    let funcD7 = [
+        (["A"],["B";"C";"D"])
+        (["B";"C"],["D";"E"])
+        (["B"],["D"])
+        (["D"],["A"])
+    ]
+    printfn "test7 bcnf \n %A" (BcnfDecomp rel7 funcD7)
+    printfn "test7 3rd\n %A" (ThreeRdDecomp rel7 funcD7)
+    printfn "test7 mini\n %A" (MiniCover funcD7)
+
     0 // return an integer exit code
